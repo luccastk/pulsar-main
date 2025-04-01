@@ -1,0 +1,12 @@
+[submodule "gateway"]
+	path = gateway
+	url = https://github.com/luccastk/gateway.git
+[submodule "eureka"]
+	path = eureka
+	url = https://github.com/luccastk/eureka.git
+[submodule "service-file"]
+	path = service-file
+	url = https://github.com/luccastk/service-file.git
+[submodule "service-product"]
+	path = service-product
+	url = https://github.com/luccastk/service-product.git
