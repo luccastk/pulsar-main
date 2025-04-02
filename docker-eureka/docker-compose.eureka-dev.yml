@@ -2,6 +2,15 @@ services:
   eureka:
     build:
       context: ../eureka
+    container_name: server-eureka
+    env_file:
+      - .env
+    ports:
+      - ${EUREKA_PORT}
+    networks:
+      - backend
+    restart: always
 
 networks:
-  ${DOCKER_NETWORK}:
+  backend:
+    external: true

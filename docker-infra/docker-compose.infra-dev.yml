@@ -2,19 +2,17 @@ services:
   postgres:
     image: postgres:17
     container_name: postgres
-    ports:
-      - ${POSTGRES_PORT}
-    enviroment:
+    environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres_data:${POSTGRES_PATH}
     networks:
-      - ${DOCKER_NETWORK}
+      - backend
 
 networks:
-  ${DOCKER_NETWORK}:
-    driver: bridge
+  backend:
+    external: true
 
 volumes:
   postgres_data:

@@ -2,6 +2,21 @@ services:
   gateway:
     build:
       context: ../gateway
+    container_name: service-gateway
+    env_file:
+      - .env
+    environment:
+      EUREKA_SERVER: ${GATEWAY_EUREKA_SERVER}
+      EUREKA: ${GATEWAY_EUREKA}
+      EUREKA_PORT: ${GATEWAY_EUREKA_PORT}
+    ports:
+      - ${GATEWAY_PORT}
+    depends_on:
+      - eureka
+    networks:
+      - backend    
+    restart: always
 
 networks:
-  ${DOCKER_NETWORK}:
+  backend:
+    external: true
