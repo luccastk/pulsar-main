@@ -7,3 +7,6 @@
 [submodule "service-product"]
 	path = service-product
 	url = https://github.com/luccastk/service-product.git
+[submodule "gateway"]
+	path = gateway
+	url = https://github.com/luccastk/gateway.git
