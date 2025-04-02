@@ -1,0 +1,22 @@
+services:
+  gateway:
+    build:
+      context: ./gateway
+
+  eureka:
+    build:
+      context: ./eureka
+
+  service-products:
+    build:
+      context: ./service-product
+    env_file:
+      - ./service-product/.env
+
+  service-file:
+    build:
+      context: ./service-file
+
+networks:
+  ${DOCKER_NETWORK}
+

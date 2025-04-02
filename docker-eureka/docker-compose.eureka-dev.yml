@@ -1,0 +1,7 @@
+services:
+  eureka:
+    build:
+      context: ../eureka
+
+networks:
+  ${DOCKER_NETWORK}:

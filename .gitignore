@@ -1,0 +1,23 @@
+# Ignora qualquer arquivo .env na raiz ou em subpastas
+.env
+.env.*
+**/.env
+**/.env.*
+*.env
+*.env.*
+
+# Casos comuns que desenvolvedores esquecem
+.env.local
+.env.development
+.env.production
+.env.staging
+.env.test
+.env.backup
+.env.bak
+.env.old
+.env.example.bak
+.envrc
+
+# VS Code plugin de env
+.env.vscode
+

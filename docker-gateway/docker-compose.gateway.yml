@@ -1,0 +1,7 @@
+services:
+  gateway:
+    build:
+      context: ../gateway
+
+networks:
+  ${DOCKER_NETWORK}:
