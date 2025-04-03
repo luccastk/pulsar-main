@@ -4,11 +4,14 @@ services:
     hostname: kafka
     container_name: kafka
     ports:
-      - ${KAFKA_PORT}
+      - ${KAFKA_PORT_EX}
+      - ${KAFKA_PORT_IN}
     environment:
+      CLUSTER_ID: ${KAFKA_CLUSTER_ID}
+
       KAFKA_LISTENERS: ${KAFKA_LISTENERS}
       KAFKA_ADVERTISED_LISTENERS: ${KAFKA_ADVERTISED}
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: ${KAFKA_SECUTIRY_PROTOCOL}
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: ${KAFKA_SECURITY_PROTOCOL}
       
       KAFKA_NODE_ID: ${KAFKA_NODE}
       KAFKA_PROCESS_ROLES: ${KAFKA_ROLE}
@@ -19,7 +22,7 @@ services:
 
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: ${KAFKA_OFFSET_TOPIC}
     volumes:
-      - kafka_data:${KAFKA_PATH}
+      - ./KAFKA/data:${KAFKA_PATH}
     networks:
       - backend
 
@@ -34,10 +37,9 @@ services:
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: ${KAFKAUI_CONNECT}
     depends_on:
       - kafka
+    networks:
+      - backend
 
 networks:
   backend:
     external: true
-
-volumes:
-  kafka_data:

@@ -1,10 +1,7 @@
 # Ignora qualquer arquivo .env na raiz ou em subpastas
 .env
-.env.*
 **/.env
-**/.env.*
 *.env
-*.env.*
 
 # Casos comuns que desenvolvedores esquecem
 .env.local
