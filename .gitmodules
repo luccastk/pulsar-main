@@ -10,3 +10,6 @@
 [submodule "gateway"]
 	path = gateway
 	url = https://github.com/luccastk/gateway.git
+[submodule "common-kafka"]
+	path = common-kafka
+	url = https://github.com/luccastk/common-kafka.git
