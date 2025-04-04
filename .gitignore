@@ -18,3 +18,5 @@
 # VS Code plugin de env
 .env.vscode
 
+./docker-kafka/KAFKA
+
