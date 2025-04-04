@@ -5,8 +5,14 @@ echo 	  	INICIANDO KAFKA
 echo ========================================
 echo.
 
-echo criando pasta KAFKA/data...
-mkdir ..\docker-kafka\KAFKA\data
+set KAFKA_FOLDER=..\docker-kafka\KAFKA
+
+if not exist %KAFKA_FOLDER% (
+	mkdir %KAFKA_FOLDER%\data
+	echo Pasta criada; %KAFKA_FOLDER%.
+)  else (
+	echo Pasta já existe: %KAFKA_FOLDER%.
+)
 
 set KAFKA=..\docker-kafka\docker-compose.kafka-dev.yml
 
