@@ -20,3 +20,7 @@
 
 ./docker-kafka/KAFKA
 
+# Idea
+/.idea
+.idea/*
+
