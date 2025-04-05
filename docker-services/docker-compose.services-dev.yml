@@ -1,0 +1,10 @@
+services:
+  service-file:
+    build:
+      context: ../service-file
+    networks:
+      - backend
+
+networks:
+  backend:
+
