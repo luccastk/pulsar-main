@@ -5,14 +5,19 @@ echo       INICIANDO AMBIENTE COMPLETO
 echo ========================================
 echo.
 
+set EUREKA=..\docker-eureka\docker-compose.eureka-dev.yml
+set GATEWAY=..\docker-gateway\docker-compose.gateway-dev.yml
+set KAFKA=..\docker-kafka\docker-compose.kafka-dev.yml
+set SERVICE_FILE=..\docker-services\docker-compose.services-dev.yml
+
 docker compose ^
 	-p complet-stack ^
 	--env-file ..\.env ^
-	-f ..\docker-eureka\docker-compose.eureka-dev.yml ^
-	-f ..\docker-gateway\docker-compose.gateway-dev.yml ^
-	-f ..\docker-kafka\docker-compose.kafka-dev.yml ^
-	-f ..\docker-services\docker-compose.services-dev.yml ^
-	up --build -d
+	-f %EUREKA% ^
+	-f %GATEWAY% ^
+	-f %KAFKA% ^
+	-f %SERVICE_FILE% ^
+	up --no-build -d
 
 echo Servicos iniciados...
 

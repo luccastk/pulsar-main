@@ -2,6 +2,10 @@ services:
   service-file:
     build:
       context: ../service-file
+    env_file:
+      - ../service-file/file_service/.env.prod
+    depends_on:
+      - eureka
     networks:
       - backend
 
