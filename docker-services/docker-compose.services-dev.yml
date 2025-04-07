@@ -1,5 +1,6 @@
 services:
   service-file:
+    container_name: service-file
     build:
       context: ../service-file
     env_file:
