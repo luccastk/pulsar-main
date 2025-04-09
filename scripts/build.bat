@@ -14,14 +14,20 @@ if not exist %KAFKA_FOLDER% (
 	echo Pasta já existe: %KAFKA_FOLDER%.
 )
 
+set INFRA=..\docker-infra\docker-compose.infra-dev.yml
+set EUREKA=..\docker-eureka\docker-compose.eureka-dev.yml
+set GATEWAY=..\docker-gateway\docker-compose.gateway-dev.yml
+set KAFKA=..\docker-kafka\docker-compose.kafka-dev.yml
+set SERVICES=..\docker-services\docker-compose.services-dev.yml
+
 docker compose ^
 	-p complet-stack ^
 	--env-file ..\.env ^
-	-f ..\docker-infra\docker-compose.infra-dev.yml ^
-	-f ..\docker-eureka\docker-compose.eureka-dev.yml ^
-	-f ..\docker-gateway\docker-compose.gateway-dev.yml ^
-	-f ..\docker-kafka\docker-compose.kafka-dev.yml ^
-	-f ..\docker-services\docker-compose.services-dev.yml ^
+	-f %INFRA% ^
+	-f %EUREKA% ^
+	-f %GATEWAY% ^
+	-f KAFKA% ^
+	-f SERVICES% ^
 	up --build -d
 
 echo Servicos iniciados...
