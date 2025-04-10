@@ -8,10 +8,10 @@ echo.
 set KAFKA_FOLDER=..\docker-kafka\KAFKA
 
 if not exist %KAFKA_FOLDER% (
-	mkdir %KAFKA_FOLDER%\data
-	echo Pasta criada; %KAFKA_FOLDER%.
+        mkdir %KAFKA_FOLDER%\data
+        echo Pasta criada: %KAFKA_FOLDER%.
 )  else (
-	echo Pasta já existe: %KAFKA_FOLDER%.
+        echo Pasta já existe: %KAFKA_FOLDER%.
 )
 
 set INFRA=..\docker-infra\docker-compose.infra-dev.yml
@@ -21,15 +21,14 @@ set KAFKA=..\docker-kafka\docker-compose.kafka-dev.yml
 set SERVICES=..\docker-services\docker-compose.services-dev.yml
 
 docker compose ^
-	-p complet-stack ^
-	--env-file ..\.env ^
-	-f %INFRA% ^
-	-f %EUREKA% ^
-	-f %GATEWAY% ^
-	-f KAFKA% ^
-	-f SERVICES% ^
-	up --build -d
+        -p complet-stack ^
+        --env-file ..\.env ^
+        -f %INFRA% ^
+        -f %EUREKA% ^
+        -f %GATEWAY% ^
+        -f %KAFKA% ^
+        -f %SERVICES% ^
+        up --build -d
 
-echo Servicos iniciados...
-
+echo Serviços iniciados...
 pause
