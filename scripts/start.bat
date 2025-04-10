@@ -12,7 +12,7 @@ set SERVICE_FILE=..\docker-services\docker-compose.services-dev.yml
 set INFRA=..\docker-infra\docker-compose.infra-dev.yml
 
 docker compose ^
-	-p complet-stack ^
+	-p dev ^
 	--env-file ..\.env ^
 	-f %INFRA% ^
 	-f %EUREKA% ^

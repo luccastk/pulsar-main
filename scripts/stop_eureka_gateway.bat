@@ -8,7 +8,7 @@ echo.
 set EUREKA=..\docker-eureka\docker-compose.eureka-dev.yml
 set GATEWAY=..\docker-gateway\docker-compose.gateway-dev.yml
 
-docker compose --project-name kit-start-dev down -v
+docker compose -p dev down -v
 echo.
 echo Tudo parado e volumes removidos.
 pause

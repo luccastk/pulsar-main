@@ -14,7 +14,7 @@ set INFRA=..\docker-infra\docker-compose.infra-dev.yml
 rd /S /Q ..\docker-kafka\KAFKA
 
 REM Derrubando containers e volumes
-docker compose -p complet-stack ^
+docker compose -p dev ^
 	--env-file ..\.env ^
 	-f %INFRA% ^
 	-f %EUREKA% ^

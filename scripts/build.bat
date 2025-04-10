@@ -21,7 +21,7 @@ set KAFKA=..\docker-kafka\docker-compose.kafka-dev.yml
 set SERVICES=..\docker-services\docker-compose.services-dev.yml
 
 docker compose ^
-        -p complet-stack ^
+        -p dev ^
         --env-file ..\.env ^
         -f %INFRA% ^
         -f %EUREKA% ^

@@ -7,7 +7,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres_data:${POSTGRES_PATH}
-      - ./init:/docker-entrypoint-initdb.d
+      - ./init/init-db.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - backend
 

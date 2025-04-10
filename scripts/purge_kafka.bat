@@ -7,7 +7,7 @@ echo.
 
 set KAFKA=..\docker-kafka\docker-compose.kafka-dev.yml
 
-docker compose -p kafka-dev --env-file ../.env -f %KAFKA% down -v
+docker compose -p dev --env-file ../.env -f %KAFKA% down -v
 
 rd /S /Q ..\docker-kafka\KAFKA
 echo.
