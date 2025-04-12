@@ -16,7 +16,7 @@ if not exist %KAFKA_FOLDER% (
 
 set KAFKA=..\docker-kafka\docker-compose.kafka-dev.yml
 
-docker compose -p dev -f %KAFKA% up -d
+docker compose -p dev -f %KAFKA% up -d --build
 
 echo.
 echo Docker Compose iniciado com sucesso.

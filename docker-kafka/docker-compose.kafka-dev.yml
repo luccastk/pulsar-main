@@ -22,7 +22,7 @@ services:
 
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: ${KAFKA_OFFSET_TOPIC}
     volumes:
-      - ./KAFKA/data:${KAFKA_PATH}
+      - ./KAFKA/data:/var/lib/kafka/data
     networks:
       - backend
 
@@ -34,7 +34,7 @@ services:
     environment:
       DYNAMIC_CONFIG_ENABLED: ${KAFKAUI_DYNAMIC_CONFIG}
       KAFKA_CLUSTERS_0_NAME: ${KAFKAUI_CLUSTER_NAME}
-      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: ${KAFKAUI_CONNECT}
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: ${KAFKA_SERVER}
     depends_on:
       - kafka
     networks:

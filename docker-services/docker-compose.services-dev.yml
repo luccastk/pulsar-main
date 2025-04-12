@@ -3,66 +3,88 @@ services:
     container_name: service-file
     build:
       context: ../service-file
-    env_file:
-      - ../service-file/file_service/.env.prod
     depends_on:
       - eureka
+      - kafka
     networks:
       - backend
   
   service-product:
     container_name: service-product
     build:
-      context: ../service-product  
+      context: ../service-product
     environment:
-      - DB_SERVER=db
-      - POSTGRES_PORT=5432
-      - POSTGRES_DB=products_db
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
-      - OPENAPI_NAME=product-service doc
-      - OPENAPI_VERSION=1.0.0
-      - OPENAPI_SOURCE=localhost:8080
-      - SPRINGDOC_APIDOCS=/v3/api-docs
-      - SPRINGDOC_SWAGGER_UI=/swagger-ui.html
-      - EUREKA_SERVER=server-eureka
-      - EUREKA=eureka
-      - EUREKA_PORT=8761
-      - KAFKA_SERVER=kafka:29092
+      - POSTGRES_SERVER=${POSTGRES_SERVER}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_DB=${POSTGRES_DB_PRODUCT}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - OPENAPI_NAME=${OPENAPI_NAME_PRODUCT}
+      - OPENAPI_VERSION=${OPENAPI_VERSION_PRODUCT}
+      - OPENAPI_SOURCE=${OPENAPI_SOURCE}
+      - SPRINGDOC_APIDOCS=${SPRINGDOC_APIDOCS}
+      - SPRINGDOC_SWAGGER_UI=${SPRINGDOC_SWAGGER_UI}
+      - EUREKA_SERVER=${EUREKA_SERVER}
+      - EUREKA=${EUREKA}
+      - EUREKA_PORT=${EUREKA_PORT}
+      - KAFKA_SERVER=${KAFKA_SERVER}
     depends_on:
       - eureka
       - db
+      - kafka
     networks:
       - backend
 
   service-user:
     container_name: service-user
     build:
-      context: ../service-user  
+      context: ../service-user
     environment:
-      - DB_SERVER=db
-      - POSTGRES_PORT=5432
-      - POSTGRES_DB=users_db
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
-      - OPENAPI_NAME=service-user doc
-      - OPENAPI_VERSION=1.0.0
-      - OPENAPI_SOURCE=localhost:8080
-      - SPRINGDOC_APIDOCS=/v3/api-docs
-      - SPRINGDOC_SWAGGER_UI=/swagger-ui.html
-      - EUREKA_SERVER=server-eureka
-      - EUREKA=eureka
-      - EUREKA_PORT=8761
-      - KAFKA_SERVER=kafka:29092
-      - JWT_SECRET=key
-      - JWT_ISSUER=issuer
+      - POSTGRES_SERVER=${POSTGRES_SERVER}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_DB=${POSTGRES_DB_USER}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - OPENAPI_NAME=${OPENAPI_NAME_USER}
+      - OPENAPI_VERSION=${OPENAPI_VERSION_USER}
+      - OPENAPI_SOURCE=${OPENAPI_SOURCE}
+      - SPRINGDOC_APIDOCS=${SPRINGDOC_APIDOCS}
+      - SPRINGDOC_SWAGGER_UI=${SPRINGDOC_SWAGGER_UI}
+      - EUREKA_SERVER=${EUREKA_SERVER}
+      - EUREKA=${EUREKA}
+      - EUREKA_PORT=${EUREKA_PORT}
+      - KAFKA_SERVER=${KAFKA_SERVER}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_ISSUER=${JWT_ISSUER}
     depends_on:
       - eureka
       - db
+      - kafka
     networks:
       - backend
   
-
+  service-mail:
+    container_name: service-mail
+    build:
+      context: ../service-mail
+    depends_on:
+      - kafka
+    environment:
+      - OPENAPI_NAME=${OPENAPI_NAME_MAIL}
+      - OPENAPI_VERSION=${OPENAPI_VERSION_MAIL}
+      - OPENAPI_SOURCE=${OPENAPI_SOURCE}
+      - SPRINGDOC_APIDOCS=${SPRINGDOC_APIDOCS}
+      - SPRINGDOC_SWAGGER_UI=${SPRINGDOC_SWAGGER_UI}
+      - EUREKA_SERVER=${EUREKA_SERVER}
+      - EUREKA=${EUREKA}
+      - EUREKA_PORT=${EUREKA_PORT}
+      - KAFKA_SERVER=${KAFKA_SERVER}
+      - MAIL_HOST=${MAIL_HOST}
+      - MAIL_PORT=${MAIL_PORT}
+      - MAIL_USERNAME=${MAIL_USERNAME}
+      - MAIL_PASSWORD=${MAIL_PASSWORD}
+    networks:
+      - backend
+  
 networks:
   backend:
-
