@@ -13,3 +13,9 @@
 [submodule "common-kafka"]
 	path = common-kafka
 	url = https://github.com/luccastk/common-kafka.git
+[submodule "service-mail"]
+	path = service-mail
+	url = https://github.com/luccastk/service-mail.git
+[submodule "service-user"]
+	path = service-user
+	url = https://github.com/luccastk/service-user.git
