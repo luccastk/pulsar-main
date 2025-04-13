@@ -5,7 +5,7 @@ services:
     container_name: service-gateway
     environment:
       EUREKA_SERVER: ${EUREKA_SERVER}
-      EUREKA: ${EUREKA}
+      EUREKA_NAME: ${EUREKA_NAME}
       EUREKA_PORT: ${EUREKA_PORT_EX}
     ports:
       - ${GATEWAY_PORT}

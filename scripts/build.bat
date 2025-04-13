@@ -21,11 +21,11 @@ set KAFKA=..\docker-kafka\docker-compose.kafka-dev.yml
 set SERVICES=..\docker-services\docker-compose.services-dev.yml
 
 docker compose -p dev --env-file ..\.env ^
+	-f %INFRA% ^
 	-f %EUREKA% ^
         -f %GATEWAY% ^
         -f %KAFKA% ^
         -f %SERVICES% ^
-	-f %INFRA% ^
         up --build -d
 
 echo Serviços iniciados...
