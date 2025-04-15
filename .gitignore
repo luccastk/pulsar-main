@@ -19,6 +19,7 @@
 .env.vscode
 
 ./docker-kafka/KAFKA
+*/KAFKA
 
 # Idea
 /.idea

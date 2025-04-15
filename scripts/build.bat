@@ -5,13 +5,19 @@ echo       BUILDANDO AMBIENTE COMPLETO
 echo ========================================
 echo.
 
-set KAFKA_FOLDER=..\docker-kafka\KAFKA
+REM :: Define a pasta onde o script está
+set "SCRIPT_DIR=%~dp0"
+cd /d "%SCRIPT_DIR%"
 
-if not exist %KAFKA_FOLDER% (
-        mkdir %KAFKA_FOLDER%\data
-        echo Pasta criada: %KAFKA_FOLDER%.
-)  else (
-        echo Pasta já existe: %KAFKA_FOLDER%.
+REM :: Agora tudo é baseado no caminho real
+set KAFKA_FOLDER=%SCRIPT_DIR%..\docker-kafka\KAFKA
+set KAFKA_DATA_FOLDER=%KAFKA_FOLDER%\data
+
+if not exist "%KAFKA_DATA_FOLDER%" (
+    mkdir "%KAFKA_DATA_FOLDER%"
+    echo Pasta criada: %KAFKA_DATA_FOLDER%.
+) else (
+    echo Pasta já existe: %KAFKA_DATA_FOLDER%.
 )
 
 set INFRA=..\docker-infra\docker-compose.infra-dev.yml
